@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,14 +26,17 @@ public class TeacherRepository {
     }
 
     public List<Teacher> getAllTeachers() {
+        if (teacherDb.isEmpty()) return new ArrayList<>();
+
         return teacherDb.values().stream().collect(Collectors.toList());
     }
 
     public String deleteTeacher(String name) {
-        teacherDb.remove(name);
+        if (teacherDb.containsKey(name)) {
+            teacherDb.remove(name);
+            return studentTeacherRepository.deleteStudentTeacherPair(name);
+        }
 
-        String msg = studentTeacherRepository.deleteStudentTeacherPair(name);
-
-        return msg;
+        return "";
     }
 }

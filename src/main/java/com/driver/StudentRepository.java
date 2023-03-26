@@ -2,6 +2,7 @@ package com.driver;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,12 +20,17 @@ public class StudentRepository {
     }
 
     public List<Student> getAllStudents() {
+        if (studentDb.isEmpty()) return new ArrayList<>();
+
         return studentDb.values().stream().collect(Collectors.toList());
     }
 
     public String deleteStudent(String name) {
-        studentDb.remove(name);
+        if (studentDb.containsKey(name)) {
+            studentDb.remove(name);
 
-        return " removed successfully";
+            return " removed successfully";
+        }
+        return "";
     }
 }

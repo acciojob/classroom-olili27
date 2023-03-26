@@ -43,9 +43,11 @@ public class StudentService {
     public Student getStudentByName(String name) {
         List<Student> students = studentRepository.getAllStudents();
 
-        for (Student student: students) {
-            if(student.getName().equals(name)) {
-                return student;
+        if (students.size() > 0) {
+            for (Student student: students) {
+                if(student.getName().equals(name)) {
+                    return student;
+                }
             }
         }
 
@@ -55,9 +57,11 @@ public class StudentService {
     public Teacher getTeacherByName(String name) {
         List<Teacher> teachers = teacherRepository.getAllTeachers();
 
-        for (Teacher teacher: teachers) {
-            if(teacher.getName().equals(name)) {
-                return teacher;
+        if (teachers.size() > 0) {
+            for (Teacher teacher : teachers) {
+                if (teacher.getName().equals(name)) {
+                    return teacher;
+                }
             }
         }
 
@@ -67,11 +71,16 @@ public class StudentService {
     public List<String> getStudentsByTeacherName(String teacher) {
         List<String> students = studentTeacherRepository.getStudentsByTeacherName(teacher);
 
+        if (students.isEmpty()) return null;
+
         return students;
     }
 
     public List<String> getAllStudents() {
         List<Student> studentList = studentRepository.getAllStudents();
+
+        if (studentList.isEmpty()) return null;
+
         List<String> studentNames = new ArrayList<>();
 
         for (Student student: studentList) {
@@ -89,6 +98,8 @@ public class StudentService {
 
     public String deleteAllTeachers() {
         List<Teacher> teachers = teacherRepository.getAllTeachers();
+
+        if (teachers.isEmpty()) return "";
 
         for (Teacher teacher: teachers) {
             deleteTeacherByName(teacher.getName());
