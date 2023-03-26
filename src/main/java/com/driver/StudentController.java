@@ -48,8 +48,6 @@ public class StudentController {
 
         String response = studentService.addStudentTeacherPair(student, teacher);
 
-        if (response.equals("")) return new ResponseEntity<>("Pair not created", HttpStatus.BAD_REQUEST);
-
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
@@ -58,8 +56,6 @@ public class StudentController {
         if (name.equals("")) return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 
         Student student = studentService.getStudentByName(name); // Assign student by calling service layer method
-
-        if (student == null) return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
@@ -71,8 +67,6 @@ public class StudentController {
 
         Teacher teacher = studentService.getTeacherByName(name); // Assign student by calling service layer method
 
-        if (teacher == null) return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-
         return new ResponseEntity<>(teacher, HttpStatus.OK);
     }
 
@@ -83,16 +77,12 @@ public class StudentController {
 
         List<String> students = studentService.getStudentsByTeacherName(teacher); // Assign list of student by calling service layer method
 
-        if (students == null) return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
 
     @GetMapping("/get-all-students")
     public ResponseEntity<List<String>> getAllStudents(){
         List<String> students = studentService.getAllStudents(); // Assign list of student by calling service layer method
-
-        if (students == null) return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
@@ -104,15 +94,11 @@ public class StudentController {
 
         String response = studentService.deleteTeacherByName(teacher);
 
-        if (response.equals("")) return new ResponseEntity<>("No teacher found", HttpStatus.NOT_FOUND);
-        
         return new ResponseEntity<>(teacher + " " +  response, HttpStatus.OK);
     }
     @DeleteMapping("/delete-all-teachers")
     public ResponseEntity<String> deleteAllTeachers(){
         String response = studentService.deleteAllTeachers();
-
-        if (response.equals("")) return new ResponseEntity<>("No teacher found", HttpStatus.NOT_FOUND);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

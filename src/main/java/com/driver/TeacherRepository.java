@@ -26,7 +26,7 @@ public class TeacherRepository {
     }
 
     public List<Teacher> getAllTeachers() {
-        if (teacherDb.isEmpty()) return new ArrayList<>();
+//        if (teacherDb.isEmpty()) return new ArrayList<>();
 
         return teacherDb.values().stream().collect(Collectors.toList());
     }

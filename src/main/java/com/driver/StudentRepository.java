@@ -20,7 +20,7 @@ public class StudentRepository {
     }
 
     public List<Student> getAllStudents() {
-        if (studentDb.isEmpty()) return new ArrayList<>();
+//        if (studentDb.isEmpty()) return new ArrayList<>();
 
         return studentDb.values().stream().collect(Collectors.toList());
     }

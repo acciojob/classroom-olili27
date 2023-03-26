@@ -39,14 +39,14 @@ public class StudentTeacherRepository {
     }
 
     public List<String> getStudentsByTeacherName(String teacher) {
-        if (!studentTeacherPairDb.containsKey(teacher)) return new ArrayList<>();
+//        if (!studentTeacherPairDb.containsKey(teacher)) return new ArrayList<>();
 
         return studentTeacherPairDb.get(teacher).stream().collect(Collectors.toList());
     }
 
     public String deleteStudentTeacherPair(String teacher) {
 
-        if (!studentTeacherPairDb.containsKey(teacher)) return "";
+//        if (!studentTeacherPairDb.containsKey(teacher)) return "";
 
         List<String> students = studentTeacherPairDb.get(teacher);
 
