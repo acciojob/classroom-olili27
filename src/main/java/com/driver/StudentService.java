@@ -1,10 +1,5 @@
-package com.driver.services;
+package com.driver;
 
-import com.driver.models.Student;
-import com.driver.models.Teacher;
-import com.driver.repository.StudentRepository;
-import com.driver.repository.StudentTeacherRepository;
-import com.driver.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;

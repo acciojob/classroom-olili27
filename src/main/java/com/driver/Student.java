@@ -1,4 +1,4 @@
-package com.driver.models;
+package com.driver;
 
 public class Student {
 
