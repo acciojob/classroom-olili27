@@ -26,7 +26,7 @@ public class StudentController {
     StudentService studentService;
     @PostMapping("/add-student")
     public ResponseEntity<String> addStudent(@RequestBody Student student){
-//        if (student == null) return new ResponseEntity<>("No student added", HttpStatus.BAD_REQUEST);
+        if (student == null) return new ResponseEntity<>("No student added", HttpStatus.BAD_REQUEST);
 
         String response = studentService.addStudent(student);
 
@@ -35,7 +35,7 @@ public class StudentController {
 
     @PostMapping("/add-teacher")
     public ResponseEntity<String> addTeacher(@RequestBody Teacher teacher){
-//        if(teacher == null) return new ResponseEntity<>("No teacher added", HttpStatus.BAD_REQUEST);
+        if(teacher == null) return new ResponseEntity<>("No teacher added", HttpStatus.BAD_REQUEST);
 
         String response = studentService.addTeacher(teacher);
 
@@ -44,7 +44,7 @@ public class StudentController {
 
     @PutMapping("/add-student-teacher-pair")
     public ResponseEntity<String> addStudentTeacherPair(@RequestParam String student, @RequestParam String teacher){
-//        if (student.equals("") || teacher.equals("")) return new ResponseEntity<>("Provide both student and teacher", HttpStatus.BAD_REQUEST);
+        if (student.equals("") || teacher.equals("")) return new ResponseEntity<>("Provide both student and teacher", HttpStatus.BAD_REQUEST);
 
         String response = studentService.addStudentTeacherPair(student, teacher);
 
@@ -55,7 +55,7 @@ public class StudentController {
 
     @GetMapping("/get-student-by-name/{name}")
     public ResponseEntity<Student> getStudentByName(@PathVariable String name){
-//        if (name.equals("")) return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        if (name.equals("")) return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 
         Student student = studentService.getStudentByName(name); // Assign student by calling service layer method
 
@@ -67,7 +67,7 @@ public class StudentController {
     @GetMapping("/get-teacher-by-name/{name}")
     public ResponseEntity<Teacher> getTeacherByName(@PathVariable String name){
 
-//        if (name.equals("")) return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        if (name.equals("")) return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 
         Teacher teacher = studentService.getTeacherByName(name); // Assign student by calling service layer method
 
@@ -79,7 +79,7 @@ public class StudentController {
     @GetMapping("/get-students-by-teacher-name/{teacher}")
     public ResponseEntity<List<String>> getStudentsByTeacherName(@PathVariable String teacher){
 
-//        if (teacher.equals("")) return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        if (teacher.equals("")) return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 
         List<String> students = studentService.getStudentsByTeacherName(teacher); // Assign list of student by calling service layer method
 
@@ -100,7 +100,7 @@ public class StudentController {
     @DeleteMapping("/delete-teacher-by-name")
     public ResponseEntity<String> deleteTeacherByName(@RequestParam String teacher){
 
-//        if (teacher.equals("")) return new ResponseEntity<>("Enter teacher name", HttpStatus.BAD_REQUEST);
+        if (teacher.equals("")) return new ResponseEntity<>("Enter teacher name", HttpStatus.BAD_REQUEST);
 
         String response = studentService.deleteTeacherByName(teacher);
 
