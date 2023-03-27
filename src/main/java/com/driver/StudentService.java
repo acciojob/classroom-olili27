@@ -10,17 +10,8 @@ import java.util.List;
 
 @Service
 public class StudentService {
-    @Lazy
     @Autowired
     StudentRepository studentRepository;
-
-    @Lazy
-    @Autowired
-    StudentTeacherRepository studentTeacherRepository;
-
-    @Lazy
-    @Autowired
-    TeacherRepository teacherRepository;
 
     public String addStudent(Student student) {
        String res = studentRepository.addStudent(student);
@@ -29,13 +20,13 @@ public class StudentService {
     }
 
     public String addTeacher(Teacher teacher) {
-        String res = teacherRepository.addTeacher(teacher);
+        String res = studentRepository.addTeacher(teacher);
 
         return res;
     }
 
     public String addStudentTeacherPair(String student, String teacher) {
-        String res = studentTeacherRepository.addStudentTeacherPair(student, teacher);
+        String res = studentRepository.addStudentTeacherPair(student, teacher);
 
         return res;
     }
@@ -55,7 +46,7 @@ public class StudentService {
     }
 
     public Teacher getTeacherByName(String name) {
-        List<Teacher> teachers = teacherRepository.getAllTeachers();
+        List<Teacher> teachers = studentRepository.getAllTeachers();
 
         if (teachers.size() > 0) {
             for (Teacher teacher : teachers) {
@@ -69,9 +60,9 @@ public class StudentService {
     }
 
     public List<String> getStudentsByTeacherName(String teacher) {
-        List<String> students = studentTeacherRepository.getStudentsByTeacherName(teacher);
+        List<String> students = studentRepository.getStudentsByTeacherName(teacher);
 
-        if (students.isEmpty()) return null;
+        if (students == null) return null;
 
         return students;
     }
@@ -79,7 +70,7 @@ public class StudentService {
     public List<String> getAllStudents() {
         List<Student> studentList = studentRepository.getAllStudents();
 
-        if (studentList.isEmpty()) return null;
+        if (studentList == null) return null;
 
         List<String> studentNames = new ArrayList<>();
 
@@ -91,15 +82,15 @@ public class StudentService {
     }
 
     public String deleteTeacherByName(String teacher) {
-        String msg = teacherRepository.deleteTeacher(teacher);
+        String msg = studentRepository.deleteTeacher(teacher);
 
         return msg;
     }
 
     public String deleteAllTeachers() {
-        List<Teacher> teachers = teacherRepository.getAllTeachers();
+        List<Teacher> teachers = studentRepository.getAllTeachers();
 
-        if (teachers.isEmpty()) return "";
+        if (teachers == null) return "";
 
         for (Teacher teacher: teachers) {
             deleteTeacherByName(teacher.getName());
