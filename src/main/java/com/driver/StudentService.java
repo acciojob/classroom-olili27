@@ -34,7 +34,7 @@ public class StudentService {
     public Student getStudentByName(String name) {
         List<Student> students = studentRepository.getAllStudents();
 
-        if (students.size() > 0) {
+        if (students != null) {
             for (Student student: students) {
                 if(student.getName().equals(name)) {
                     return student;
@@ -48,7 +48,7 @@ public class StudentService {
     public Teacher getTeacherByName(String name) {
         List<Teacher> teachers = studentRepository.getAllTeachers();
 
-        if (teachers !=) {
+        if (teachers != null) {
             for (Teacher teacher : teachers) {
                 if (teacher.getName().equals(name)) {
                     return teacher;
