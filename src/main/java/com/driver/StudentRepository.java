@@ -70,11 +70,13 @@ public class StudentRepository {
             if (studentTeacherPairDb.containsKey(teacher)) {
                 List<String> oldList = studentTeacherPairDb.get(teacher);
                 oldList.add(student);
+                studentTeacherPairDb.put(teacher, oldList);
 
                 return "New student-teacher pair added successfully";
             } else {
                 List<String> newList = new ArrayList<>();
                 newList.add(student);
+                studentTeacherPairDb.put(teacher, newList);
 
                 return "New student-teacher pair added successfully";
             }

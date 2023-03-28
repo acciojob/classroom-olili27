@@ -48,7 +48,7 @@ public class StudentService {
     public Teacher getTeacherByName(String name) {
         List<Teacher> teachers = studentRepository.getAllTeachers();
 
-        if (teachers.size() > 0) {
+        if (teachers !=) {
             for (Teacher teacher : teachers) {
                 if (teacher.getName().equals(name)) {
                     return teacher;
