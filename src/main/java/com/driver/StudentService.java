@@ -83,7 +83,7 @@ public class StudentService {
         if (teachers == null) return "";
 
         for (Teacher teacher: teachers) {
-            deleteTeacherByName(teacher.getName());
+            TeacherRepository.deleteTeacher(teacher.getName());
         }
 
         return "All teachers deleted successfully";
