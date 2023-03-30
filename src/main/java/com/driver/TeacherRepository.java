@@ -1,9 +1,12 @@
 package com.driver;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Repository
 public class TeacherRepository {
     static HashMap<String, Teacher> teacherDb = new HashMap<>();
 
