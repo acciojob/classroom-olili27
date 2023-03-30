@@ -10,29 +10,21 @@ import java.util.List;
 
 @Service
 public class StudentService {
-    @Autowired
-    StudentRepository studentRepository;
 
     public String addStudent(Student student) {
-       String res = studentRepository.addStudent(student);
-
-       return res;
+       return  StudentRepository.addStudent(student);
     }
 
     public String addTeacher(Teacher teacher) {
-        String res = studentRepository.addTeacher(teacher);
-
-        return res;
+        return TeacherRepository.addTeacher(teacher);
     }
 
     public String addStudentTeacherPair(String student, String teacher) {
-        String res = studentRepository.addStudentTeacherPair(student, teacher);
-
-        return res;
+        return StudentTeacherRepository.addStudentTeacherPair(student, teacher);
     }
 
     public Student getStudentByName(String name) {
-        List<Student> students = studentRepository.getAllStudents();
+        List<Student> students = StudentRepository.getAllStudents();
 
         if (students != null) {
             for (Student student: students) {
@@ -46,7 +38,7 @@ public class StudentService {
     }
 
     public Teacher getTeacherByName(String name) {
-        List<Teacher> teachers = studentRepository.getAllTeachers();
+        List<Teacher> teachers = TeacherRepository.getAllTeachers();
 
         if (teachers != null) {
             for (Teacher teacher : teachers) {
@@ -60,7 +52,7 @@ public class StudentService {
     }
 
     public List<String> getStudentsByTeacherName(String teacher) {
-        List<String> students = studentRepository.getStudentsByTeacherName(teacher);
+        List<String> students = StudentTeacherRepository.getStudentsByTeacherName(teacher);
 
         if (students == null) return null;
 
@@ -68,7 +60,7 @@ public class StudentService {
     }
 
     public List<String> getAllStudents() {
-        List<Student> studentList = studentRepository.getAllStudents();
+        List<Student> studentList = StudentRepository.getAllStudents();
 
         if (studentList == null) return null;
 
@@ -82,13 +74,11 @@ public class StudentService {
     }
 
     public String deleteTeacherByName(String teacher) {
-        String msg = studentRepository.deleteTeacher(teacher);
-
-        return msg;
+        return TeacherRepository.deleteTeacher(teacher);
     }
 
     public String deleteAllTeachers() {
-        List<Teacher> teachers = studentRepository.getAllTeachers();
+        List<Teacher> teachers = TeacherRepository.getAllTeachers();
 
         if (teachers == null) return "";
 
