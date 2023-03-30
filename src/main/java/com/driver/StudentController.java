@@ -29,7 +29,7 @@ public class StudentController {
 
         String response = studentService.addStudent(student);
 
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping("/add-teacher")
@@ -37,7 +37,7 @@ public class StudentController {
 
         String response = studentService.addTeacher(teacher);
 
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping("/add-student-teacher-pair")
